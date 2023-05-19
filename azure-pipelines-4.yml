@@ -28,10 +28,17 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: Bash@3
+    - task: Maven@4
       inputs:
-        filePath: 'maven'
-        arguments: '-v'
+        mavenPomFile: 'pom.xml'
+        goals: 'version'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
