@@ -28,17 +28,11 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: Maven@4
+    - task: JavaToolInstaller@0
       inputs:
-        mavenPomFile: 'pom.xml'
-        goals: 'verify'
-        publishJUnitResults: true
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        javaHomeOption: 'JDKVersion'
-        mavenVersionOption: 'Default'
-        mavenAuthenticateFeed: false
-        effectivePomSkip: false
-        sonarQubeRunAnalysis: false
+        versionSpec: '17'
+        jdkArchitectureOption: 'x86'
+        jdkSourceOption: 'PreInstalled'
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
