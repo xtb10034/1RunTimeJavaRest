@@ -28,6 +28,10 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: Bash@3
+      inputs:
+        filePath: 'maven'
+        arguments: '-v'
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
