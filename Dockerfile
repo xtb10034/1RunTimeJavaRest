@@ -4,6 +4,8 @@ VOLUME /tmp
 
 EXPOSE 8081
 
+EXPOSE 8082
+
 RUN apt update && apt install -y curl iputils-ping telnet unzip && apt clean all
 
 ARG JAR_FILE=/target/restful-0.0.1-SNAPSHOT.jar
